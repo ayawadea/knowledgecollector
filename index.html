@@ -1,221 +1,210 @@
 
                  
-          
-    
-     <!DOCTYPE html>
+       <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knowledge Collector | جامع المعرفة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <title>Knowledge Collector | Pro App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4a90e2;
-            --bg-color: #f4f7f6;
-            --text-color: #333;
-            --card-bg: #ffffff;
+            --primary: #6366F1;
+            --bg: #F8FAFC;
+            --card: #FFFFFF;
+            --text: #1E293B;
         }
+
         body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Tajawal', 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             margin: 0;
-            padding: 20px;
+            padding-bottom: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .container {
-            max-width: 600px;
+
+        /* Header - تشبه تطبيقات الآيفون */
+        header {
             width: 100%;
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        h1 {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
             text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .input-group {
-            margin-bottom: 15px;
+
+        .app-name {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
         }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        textarea, input, select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 16px;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background-color: #357abd;
-        }
-        hr {
-            margin: 30px 0;
-            border: 0;
-            border-top: 1px solid #eee;
-        }
-        .notes-list {
+
+        .container {
+            width: 90% ;
+            max-width: 500px;
             margin-top: 20px;
         }
-        .note-item {
-            background: #f9f9f9;
+
+        /* كارت الإدخال المحترف */
+        .input-box {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 14px;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus { border-color: var(--primary); background: #FEE; }
+
+        .btn-main {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 100%;
             padding: 15px;
-            border-right: 5px solid var(--primary-color);
-            margin-bottom: 15px;
-            border-radius: 5px;
-            position: relative;
-        }
-        .note-tag {
-            font-size: 12px;
-            background: #e1f0ff;
-            color: var(--primary-color);
-            padding: 2px 8px;
-            border-radius: 10px;
-            display: inline-block;
-            margin-bottom: 8px;
-        }
-        .delete-btn {
-            color: #e74c3c;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 16px;
             cursor: pointer;
-            float: left;
-            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            transition: 0.3s active;
         }
+
+        .btn-main:active { transform: scale(0.97); }
+
+        /* عرض الملاحظات ككروت موبايل */
+        .note-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 18px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border-right: 6px solid var(--primary);
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .category-tag {
+            font-size: 10px;
+            background: #EEF2FF;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .delete-btn {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            background: #FFF1F1;
+            color: #EF4444;
+            padding: 5px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        h2 { font-size: 1.1rem; margin-bottom: 20px; color: #64748B; }
     </style>
 </head>
 <body>
 
+<header>
+    <div class="app-name">KNOWLEDGE COLLECTOR</div>
+</header>
+
 <div class="container">
-    <h1>جامع المعرفة 🦷</h1>
-    
-    <div class="input-group">
-        <label>الموضوع / العنوان</label>
-        <input type="text" id="noteTitle" placeholder="مثلاً: ترميم العصب، بحث الأوكسجين..">
-    </div>
-
-    <div class="input-group">
-        <label>التصنيف</label>
-        <select id="noteCategory">
-            <option value="طب أسنان ترميمي">طب أسنان ترميمي</option>
-            <option value="جراحة وتجميل">جراحة وتجميل</option>
-            <option value="أبحاث علمية">أبحاث علمية</option>
-            <option value="عام">عام</option>
+    <div class="input-box">
+        <input type="text" id="title" placeholder="عنوان الملاحظة...">
+        <select id="cat">
+            <option value="طب أسنان">🦷 طب أسنان</option>
+            <option value="أبحاث">🔬 أبحاث علمية</option>
+            <option value="لغات">🌍 لغات (English/German)</option>
+            <option value="أخرى">✨ ملاحظات عامة</option>
         </select>
+        <textarea id="desc" rows="3" placeholder="اكتبي التفاصيل هنا..."></textarea>
+        <button class="btn-main" onclick="saveData()">إضافة للمكتبة ✅</button>
     </div>
 
-    <div class="input-group">
-        <label>الملاحظة</label>
-        <textarea id="noteContent" rows="4" placeholder="اكتبي تفاصيل الملاحظة هنا..."></textarea>
-    </div>
-
-    <button onclick="saveNote()">حفظ الملاحظة ✅</button>
-
-    <hr>
-
-    <h2>الملاحظات المحفوظة 📋</h2>
-    <div id="notesList" class="notes-list">
-        </div>
+    <h2>مجموعتك المحفوظة 📚</h2>
+    <div id="app-list"></div>
 </div>
 
 <script>
-    // وظيفة الحفظ في التخزين المحلي (LocalStorage)
-    function saveNote() {
-        const title = document.getElementById('noteTitle').value;
-        const category = document.getElementById('noteCategory').value;
-        const content = document.getElementById('noteContent').value;
+    function saveData() {
+        const title = document.getElementById('title').value;
+        const cat = document.getElementById('cat').value;
+        const desc = document.getElementById('desc').value;
 
-        if (!title || !content) {
-            alert("يرجى ملء العنوان والمحتوى!");
-            return;
-        }
+        if(!title || !desc) return alert("فضلاً املئي البيانات");
 
-        const note = {
-            id: Date.now(),
-            title,
-            category,
-            content,
-            date: new Date().toLocaleDateString('ar-EG')
-        };
+        const item = { id: Date.now(), title, cat, desc, date: new Date().toLocaleDateString('ar-EG') };
+        let storage = JSON.parse(localStorage.getItem('pro_data')) || [];
+        storage.unshift(item);
+        localStorage.setItem('pro_data', JSON.stringify(storage));
 
-        let notes = JSON.parse(localStorage.getItem('myNotes')) || [];
-        notes.unshift(note);
-        localStorage.setItem('myNotes', JSON.stringify(notes));
-
-        // مسح الخانات بعد الحفظ
-        document.getElementById('noteTitle').value = '';
-        document.getElementById('noteContent').value = '';
-
-        displayNotes();
+        document.getElementById('title').value = '';
+        document.getElementById('desc').value = '';
+        loadData();
     }
 
-    // وظيفة عرض الملاحظات
-    function displayNotes() {
-        const notesList = document.getElementById('notesList');
-        const notes = JSON.parse(localStorage.getItem('myNotes')) || [];
+    function loadData() {
+        const list = document.getElementById('app-list');
+        const data = JSON.parse(localStorage.getItem('pro_data')) || [];
+        list.innerHTML = '';
         
-        notesList.innerHTML = '';
-
-        notes.forEach(note => {
-            const noteDiv = document.createElement('div');
-            noteDiv.className = 'note-item';
-            noteDiv.innerHTML = `
-                <span class="note-tag">${note.category}</span>
-                <span class="delete-btn" onclick="deleteNote(${note.id})">حذف 🗑️</span>
-                <h3 style="margin: 5px 0;">${note.title}</h3>
-                <p style="white-space: pre-wrap;">${note.content}</p>
-                <small style="color: #888;">التاريخ: ${note.date}</small>
+        data.forEach(x => {
+            list.innerHTML += `
+                <div class="note-card">
+                    <span class="delete-btn" onclick="removeItem(${x.id})">حذف 🗑️</span>
+                    <span class="category-tag">${x.cat}</span>
+                    <h3 style="margin: 5px 0; font-size: 17px;">${x.title}</h3>
+                    <p style="font-size: 14px; color: #475569; line-height: 1.5;">${x.desc}</p>
+                    <small style="color: #94A3B8; font-size: 11px;">${x.date}</small>
+                </div>
             `;
-            notesList.appendChild(noteDiv);
         });
     }
 
-    // وظيفة الحذف
-    function deleteNote(id) {
-        let notes = JSON.parse(localStorage.getItem('myNotes')) || [];
-        notes = notes.filter(n => n.id !== id);
-        localStorage.setItem('myNotes', JSON.stringify(notes));
-        displayNotes();
+    function removeItem(id) {
+        let storage = JSON.parse(localStorage.getItem('pro_data')) || [];
+        storage = storage.filter(i => i.id !== id);
+        localStorage.setItem('pro_data', JSON.stringify(storage));
+        loadData();
     }
 
-    // عرض الملاحظات عند فتح الصفحة
-    displayNotes();
+    loadData();
 </script>
 
 </body>
-</html>
-             
-                
-
-
-             
-          
-       
-                  
-   
-               
-
-     
-            
-          
+</html>   
+    
   
